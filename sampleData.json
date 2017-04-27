@@ -2,19 +2,21 @@
 	{
 		"type": "quartz",
 		"composition": "SiO(2)",
-		"hardness": "0 to 7"
-	},
-	{
-		"type": "amethyst",
-		"variety of": "quartz",
-		"composition": "SiO(2)",
-		"hardness": "7"
-	},
-	{
-		"type": "citrine",
-		"variety of": "quartz",
-		"composition": "SiO(2)",
-		"hardness": "7"
+		"hardness": "0 to 7",
+		"varieties": [
+			{
+				"type": "amethyst",
+				"variety of": "quartz",
+				"composition": "SiO(2)",
+				"hardness": "7"
+			},
+			{
+				"type": "citrine",
+				"variety of": "quartz",
+				"composition": "SiO(2)",
+				"hardness": "7"
+			}
+		]
 	},
 	{
 		"type": "diamond",
