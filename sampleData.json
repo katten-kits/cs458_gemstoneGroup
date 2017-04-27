@@ -8,17 +8,17 @@
 		"type": "amethyst",
 		"variety of": "quartz",
 		"composition": "SiO(2)",
-		"hardness": "7",
+		"hardness": "7"
 	},
 	{
 		"type": "citrine",
 		"variety of": "quartz",
 		"composition": "SiO(2)",
-		"hardness": "7",
+		"hardness": "7"
 	},
 	{
 		"type": "diamond",
 		"composition": "C",
-		"hardness": "10",
+		"hardness": "10"
 	}
 ]
