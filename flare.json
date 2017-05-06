@@ -1,0 +1,31 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "group1",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "Zircon", "mineral": "Zircon", "refractiveindexlow": "1.81", "refractiveindexhigh": "1.925", "bifringencelow": "0", "bifringencehigh": "0.059", "specificgravity": "4.315", "mohshardnesslow": "6", "mohshardnesshigh": "7.5", "colors": "Blue, red, yellow, orange, brown, green", "color": "green", "size": 750},
+      {"name": "Turquoise", "mineral": "Turquoise", "refractiveindexlow": "1.61", "refractiveindexhigh": "1.65", "bifringencelow": "0", "bifringencehigh": "unKnown", "specificgravity": "2.76", "mohshardnesslow": "5", "mohshardnesshigh": "6", "colors": "Blue", "color": "green", "size": 75},
+      {"name": "Tourmaline", "mineral": "Tourmaline", "refractiveindexlow": "1.624", "refractiveindexhigh": "1.644", "bifringencelow": "0.018", "bifringencehigh": "0.04", "specificgravity": "3.06", "mohshardnesslow": "7", "mohshardnesshigh": "7.5", "colors": "All Colors", "color": "green", "color": "green", "size": 3750, "children": [{"name": "Elbaite", "size": 750}, {"name": "Dravite", "size": 750}, {"name": "Liddioatite", "size": 750}, {"name": "Chromedravite", "size": 750}, {"name": "Tourmaline", "size": 750}]}
+      ]
+    }
+    ]
+  },
+  {
+   "name": "group2",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "Topaz", "mineral": "Topaz", "refractiveindexlow": "1.619", "refractiveindexhigh": "1.627", "bifringencelow": "0.008", "bifringencehigh": "0.01", "specificgravity": "3.53", "mohshardnesslow": "8", "mohshardnesshigh": "-", "colors": "All Colors", "color": "green", "size": 210},
+      {"name": "Tanzanite", "mineral": "Zoisite", "refractiveindexlow": "1.691", "refractiveindexhigh": "1.7", "bifringencelow": "0.008", "bifringencehigh": "0.013", "specificgravity": "3.35", "mohshardnesslow": "6.0", "mohshardnesshigh": "7", "colors": "Blue,  violet, purple", "color": "green", "size": 3480},
+      {"name": "Orthoclase", "mineral": "Feldspar", "refractiveindexlow": "1.518", "refractiveindexhigh": "1.526", "bifringencelow": "0.005", "bifringencehigh": "0.008", "specificgravity": "2.58", "mohshardnesslow": "6.0", "mohshardnesshigh": "7.2", "colors": "Yellow, green, red, red-brown, colorless", "color": "green", "size": 600}
+      ]
+    }
+    ]
+  }
+  ]
+}
