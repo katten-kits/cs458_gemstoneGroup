@@ -195,6 +195,20 @@
       {"name": "Mohs Hardness Low", "value": "9", "size": 100},
       {"name": "Mohs Hardness High", "value": "9", "size": 100}
       ]
+    },
+    {
+     "name": "Ruby",
+     "children": [
+      {"name": "Mineral", "value": "Corundum", "size": 100},
+      {"name": "Colors", "value": "Red", "size": 100},
+      {"name": "Refractive Index Low", "value": "1.762", "size": 100},
+      {"name": "Refractive Index High", "value": "1.77", "size": 100},
+      {"name": "Bifringence Low", "value": "0.008", "size": 100},
+      {"name": "Bifringence High", "value": "0.01", "size": 100},
+      {"name": "Specific Gravity", "value": "4.00", "size": 100},
+      {"name": "Mohs Hardness Low", "value": "9", "size": 100},
+      {"name": "Mohs Hardness High", "value": "9", "size": 100}
+      ]
     }
     ]
   },
@@ -265,20 +279,9 @@
       ]
     },
     {
-     "name": "Ruby",
+     "name": "Quartz",
      "children": [
-      {"name": "Mineral", "value": "Corundum", "size": 100},
-      {"name": "Colors", "value": "Red", "size": 100},
-      {"name": "Refractive Index Low", "value": "1.762", "size": 100},
-      {"name": "Refractive Index High", "value": "1.77", "size": 100},
-      {"name": "Bifringence Low", "value": "0.008", "size": 100},
-      {"name": "Bifringence High", "value": "0.01", "size": 100},
-      {"name": "Specific Gravity", "value": "4.00", "size": 100},
-      {"name": "Mohs Hardness Low", "value": "9", "size": 100},
-      {"name": "Mohs Hardness High", "value": "9", "size": 100}
-      ]
-    },
-    {
+      {
      "name": "Rose Quartz",
      "children": [
       {"name": "Mineral", "value": "Quartz", "size": 100},
@@ -289,6 +292,48 @@
       {"name": "Bifringence High", "value": "2.66", "size": 100},
       {"name": "Specific Gravity", "value": "7", "size": 100}
       ]
+    },
+    {
+     "name": "Citrine",
+     "children": [
+      {"name": "Mineral", "value": "Quartz", "size": 100},
+      {"name": "Colors", "value": "Yellow, Orange, Red", "size": 100},
+      {"name": "Refractive Index Low", "value": "1.544", "size": 100},
+      {"name": "Refractive Index High", "value": "1.553", "size": 100},
+      {"name": "Bifringence Low", "value": "2.66", "size": 100},
+      {"name": "Bifringence High", "value": "2.66", "size": 100},
+      {"name": "Mohs Hardness Low", "value": "7", "size": 100},
+      {"name": "Mohs Hardness High", "value": "7", "size": 100}
+      ]
+    },
+    {
+     "name": "Ametrine",
+     "children": [
+      {"name": "Mineral", "value": "Quartz", "size": 100},
+      {"name": "Colors", "value": "Orange, Yellow, Purple", "size": 100},
+      {"name": "Refractive Index Low", "value": "1.544", "size": 100},
+      {"name": "Refractive Index High", "value": "1.553", "size": 100},
+      {"name": "Bifringence Low", "value": "2.66", "size": 100},
+      {"name": "Bifringence High", "value": "2.66", "size": 100},
+      {"name": "Mohs Hardness Low", "value": "7", "size": 100},
+      {"name": "Mohs Hardness High", "value": "7", "size": 100}
+      ]
+    },
+    {
+     "name": "Amethyst",
+     "children": [
+      {"name": "Mineral", "value": "Quartz", "size": 100},
+      {"name": "Colors", "value": "Purple", "size": 100},
+      {"name": "Refractive Index Low", "value": "1.544", "size": 100},
+      {"name": "Refractive Index High", "value": "1.553", "size": 100},
+      {"name": "Bifringence Low", "value": "0.009", "size": 100},
+      {"name": "Bifringence High", "value": "0.009", "size": 100},
+      {"name": "Specific Gravity", "value": "2.66", "size": 100},
+      {"name": "Mohs Hardness Low", "value": "7", "size": 100},
+      {"name": "Mohs Hardness High", "value": "7", "size": 100}
+      ]
+    }
+    ]
     },
     {
      "name": "Peridot",
@@ -331,6 +376,9 @@
       ]
     },
     {
+     "name": "Beryl",
+     "children": [
+      {
      "name": "Morganite",
      "children": [
       {"name": "Mineral", "value": "Beryl", "size": 100},
@@ -342,6 +390,36 @@
       {"name": "Specific Gravity", "value": "2.80", "size": 100},
       {"name": "Mohs Hardness Low", "value": "7.5", "size": 100},
       {"name": "Mohs Hardness High", "value": "8", "size": 100}
+      ]
+    },
+    {
+     "name": "Emerald",
+     "children": [
+      {"name": "Mineral", "value": "Beryl", "size": 100},
+      {"name": "Colors", "value": "Green", "size": 100},
+      {"name": "Refractive Index Low", "value": "1.577", "size": 100},
+      {"name": "Refractive Index High", "value": "1.583", "size": 100},
+      {"name": "Bifringence Low", "value": "0.005", "size": 100},
+      {"name": "Bifringence High", "value": "0.009", "size": 100},
+      {"name": "Specific Gravity", "value": "2.72", "size": 100},
+      {"name": "Mohs Hardness Low", "value": "7.5", "size": 100},
+      {"name": "Mohs Hardness High", "value": "8", "size": 100}
+      ]
+    },
+    {
+     "name": "Aquamarine",
+     "children": [
+      {"name": "Mineral", "value": "Beryl", "size": 100},
+      {"name": "Colors", "value": "Blue", "size": 100},
+      {"name": "Refractive Index Low", "value": "1.577", "size": 100},
+      {"name": "Refractive Index High", "value": "1.583", "size": 100},
+      {"name": "Bifringence Low", "value": "0.005", "size": 100},
+      {"name": "Bifringence High", "value": "0.009", "size": 100},
+      {"name": "Specific Gravity", "value": "2.72", "size": 100},
+      {"name": "Mohs Hardness Low", "value": "7.5", "size": 100},
+      {"name": "Mohs Hardness High", "value": "8", "size": 100}
+      ]
+    }
       ]
     },
     {
@@ -387,6 +465,9 @@
       ]
     },
     {
+     "name": "Garnet",
+     "children": [
+      {
      "name": "Garnet",
      "children": [
       {"name": "Mineral", "value": "Garnet", "size": 100},
@@ -483,74 +564,8 @@
       {"name": "Mohs Hardness Low", "value": "6.5", "size": 100},
       {"name": "Mohs Hardness High", "value": "7.5", "size": 100}
       ]
-    },
-    {
-     "name": "Emerald",
-     "children": [
-      {"name": "Mineral", "value": "Beryl", "size": 100},
-      {"name": "Colors", "value": "Green", "size": 100},
-      {"name": "Refractive Index Low", "value": "1.577", "size": 100},
-      {"name": "Refractive Index High", "value": "1.583", "size": 100},
-      {"name": "Bifringence Low", "value": "0.005", "size": 100},
-      {"name": "Bifringence High", "value": "0.009", "size": 100},
-      {"name": "Specific Gravity", "value": "2.72", "size": 100},
-      {"name": "Mohs Hardness Low", "value": "7.5", "size": 100},
-      {"name": "Mohs Hardness High", "value": "8", "size": 100}
-      ]
-    },
-    {
-     "name": "Citrine",
-     "children": [
-      {"name": "Mineral", "value": "Quartz", "size": 100},
-      {"name": "Colors", "value": "Yellow, Orange, Red", "size": 100},
-      {"name": "Refractive Index Low", "value": "1.544", "size": 100},
-      {"name": "Refractive Index High", "value": "1.553", "size": 100},
-      {"name": "Bifringence Low", "value": "2.66", "size": 100},
-      {"name": "Bifringence High", "value": "2.66", "size": 100},
-      {"name": "Mohs Hardness Low", "value": "7", "size": 100},
-      {"name": "Mohs Hardness High", "value": "7", "size": 100}
-      ]
-    },
-    {
-     "name": "Aquamarine",
-     "children": [
-      {"name": "Mineral", "value": "Beryl", "size": 100},
-      {"name": "Colors", "value": "Blue", "size": 100},
-      {"name": "Refractive Index Low", "value": "1.577", "size": 100},
-      {"name": "Refractive Index High", "value": "1.583", "size": 100},
-      {"name": "Bifringence Low", "value": "0.005", "size": 100},
-      {"name": "Bifringence High", "value": "0.009", "size": 100},
-      {"name": "Specific Gravity", "value": "2.72", "size": 100},
-      {"name": "Mohs Hardness Low", "value": "7.5", "size": 100},
-      {"name": "Mohs Hardness High", "value": "8", "size": 100}
-      ]
-    },
-    {
-     "name": "Ametrine",
-     "children": [
-      {"name": "Mineral", "value": "Quartz", "size": 100},
-      {"name": "Colors", "value": "Orange, Yellow, Purple", "size": 100},
-      {"name": "Refractive Index Low", "value": "1.544", "size": 100},
-      {"name": "Refractive Index High", "value": "1.553", "size": 100},
-      {"name": "Bifringence Low", "value": "2.66", "size": 100},
-      {"name": "Bifringence High", "value": "2.66", "size": 100},
-      {"name": "Mohs Hardness Low", "value": "7", "size": 100},
-      {"name": "Mohs Hardness High", "value": "7", "size": 100}
-      ]
-    },
-    {
-     "name": "Amethyst",
-     "children": [
-      {"name": "Mineral", "value": "Quartz", "size": 100},
-      {"name": "Colors", "value": "Purple", "size": 100},
-      {"name": "Refractive Index Low", "value": "1.544", "size": 100},
-      {"name": "Refractive Index High", "value": "1.553", "size": 100},
-      {"name": "Bifringence Low", "value": "0.009", "size": 100},
-      {"name": "Bifringence High", "value": "0.009", "size": 100},
-      {"name": "Specific Gravity", "value": "2.66", "size": 100},
-      {"name": "Mohs Hardness Low", "value": "7", "size": 100},
-      {"name": "Mohs Hardness High", "value": "7", "size": 100}
-      ]
+    }
+    ]
     }
   ]
 }
