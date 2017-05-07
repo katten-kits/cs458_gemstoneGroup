@@ -5,30 +5,37 @@ d3.csv("gemstone.csv", function(error, data){
 
 	// Mineral > gemstone > variety > (colors - these are the final objects)
 
-	gemlist = {};
+	root = { "name": "gems", "children": [] };
+	gemlist = root.children;
 	data.forEach(function(gem){
 		console.log(gem);
-		if (!(gem["Mineral"] in gemlist)){
-			gemlist[gem["Mineral"]] = [];
+		if ( !gemlist.find(function(e){ return e.name == gem["Mineral"]; }) ){
+			gemlist.push({ "name": gem["Mineral"], "children": [] });
 		}
-		mineral = gemlist[gem["Mineral"]];
+		mineral = gemlist.find(function(e){ return e.name == gem["Mineral"]; });
 
-		if (!(gem["Gemstone"] in mineral)){
-			mineral[gem["Gemstone"]] = [];
+		if ( !mineral.find(function(e){ return e.name == gem["Gemstone"]; }) ){
+			mineral.push({ "name": gem["Gemstone"], "children": [] });
 		}
-		gemstone = mineral[gem["Gemstone"]];
+		gemstone = mineral.find(function(e){ return e.name == gem["Gemstone"]; });
 
-		if (!(gem["Variety"] in gemstone)){
-			gemstone[gem["Variety"]] = [];
+		// if (!(gem["Variety"] in gemstone)){
+		// 	gemstone[gem["Variety"]] = [];
+		// }
+		// variety = gemstone[gem["Variety"]];
+
+		if ( !gemstone.find(function(e){ return e.name == gem["Variety"]; }) ){
+			gemstone.push({ "name": gem["Variety"], "children": [] });
 		}
-		variety = gemstone[gem["Variety"]];
+		variety = gemstone.find(function(e){ return e.name == gem["Variety"]; });
 
+		gem.name = gem["Variety"];
 		variety.push(gem);
 	});
 
-	console.log(gemlist);
+	console.log(root);
 
-	root = d3.hierarchy({"root": gemlist})
+	root = d3.hierarchy(root)
 	  .sum(function(n){ return n["Mohs Hardness High"]; })
 	  .sort(function(a, b){ return a["Mohs Hardness High"] - b["Mohs Hardness High"]; });
 

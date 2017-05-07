@@ -56,12 +56,55 @@ var pack = d3.pack()
     .size([diameter - margin, diameter - margin])
     .padding(2);
 
-d3.json("flare.json", function(error, root) {
+d3.csv("gemstone.csv", function(error, data){
   if (error) throw error;
 
+  console.log(data);
+
+  // Mineral > gemstone > variety > (colors - these are the final objects)
+
+  root = { "name": "gems", "children": [] };
+  gemlist = root.children;
+  data.forEach(function(gem){
+    console.log(gem);
+    if ( gemlist.find(function(e){ return e.name == gem["Mineral"]; }) == undefined ){
+      gemlist.push({ "name": gem["Mineral"], "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"] });
+    }
+    mineral = gemlist.find(function(e){ return e.name == gem["Mineral"]; }).children;
+
+    if ( mineral.find(function(e){ return e.name == gem["Gemstone"]; }) == undefined ){
+      temp = { "name": gem["Gemstone"], "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"]  };
+      if (temp.name.trim() == ""){
+        temp.name = gem["Mineral"];
+      }
+      mineral.push(temp);
+    }
+    gemstone = mineral.find(function(e){ 
+      return e.name == gem["Gemstone"] || e.name == gem["Mineral"]; 
+    }).children;
+
+    if ( gemstone.find(function(e){ return e.name == gem["Variety"]; }) == undefined ){
+      gemstone.push({ "name": gem["Variety"], "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"]  });
+    }
+    variety = gemstone.find(function(e){ return e.name == gem["Variety"]; }).children;
+
+    gem.name = gem["Variety"];
+    variety.push(gem);
+  });
+
+  console.log(root);
+
   root = d3.hierarchy(root)
-      .sum(function(d) { return d.size; })
+      .sum(function(d) {
+        if (d["Mohs Hardness High"] != undefined){
+          return d["Mohs Hardness High"]; 
+        }else{
+          return d.name;
+        }
+      })
       .sort(function(a, b) { return b.value - a.value; });
+    console.log("ROOT: ");
+    console.log(root);
 
   var focus = root,
       nodes = pack(root).descendants(),
@@ -71,7 +114,14 @@ d3.json("flare.json", function(error, root) {
     .data(nodes)
     .enter().append("circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
-      .style("fill", function(d) { return d.color; })
+      .style("fill", function(d) { 
+        if (d.data["Colors"] == undefined){
+          return "blue"; 
+        }else{
+          console.log("Coloring it: " + d.data.Colors);
+          return d.data["Colors"];
+        }
+      })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
 
   var text = g.selectAll("text")
@@ -82,7 +132,13 @@ d3.json("flare.json", function(error, root) {
       .attr("y", "-8em")
       .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.name; });
+      .text(function(d) { 
+        if (d.data.name.trim() == ""){
+          console.log("Can't find name for ");
+          console.log(d);
+        }
+        return d.data.name; 
+      });
 
   text.append("text")
       .attr("class", "label")
@@ -174,7 +230,9 @@ d3.json("flare.json", function(error, root) {
 
   function zoomTo(v) {
     var k = diameter / v[2]; view = v;
-    node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
+    node.attr("transform", function(d) { 
+      return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; 
+    });
     circle.attr("r", function(d) { return d.r * k; });
   }
 });
