@@ -39,10 +39,50 @@ var svg = d3.select("svg"),
     diameter = +svg.attr("width"),
     g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
+var defs = svg.append("defs");
+
 var color = d3.scaleLinear()
     .domain([-1, 5])
     .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
     .interpolate(d3.interpolateHcl);
+
+// for "all colors" rainbow gradient...
+var grad = defs.append("linearGradient").attr("id", "allcolors")
+    .attr("x1", "0%")
+    .attr("x2", "0%")
+    .attr("y1", "0%")
+    .attr("y2", "100%");
+  ["red", "orange", "gold", "yellow", "lime", "cyan", "blue", "indigo", "violet", "magenta"].forEach(function(color, i){
+    grad.append("stop")
+      .attr("offset", 10*i + "%" )
+      .attr("stop-color", color);
+  });
+
+var makeGradient = function(colors){
+  colors = colors.split(",").map(function(x){ return x.trim(); });
+  
+  if (colors[0] == "All colors"){
+    return "url(#allcolors)";
+  }else if (colors.length == 1){
+    return colors[0];
+  }
+  
+  gradientName = colors.join("");
+
+  var grad = defs.append("linearGradient").attr("id", gradientName)
+    .attr("x1", "0%")
+    .attr("x2", "0%")
+    .attr("y1", "0%")
+    .attr("y2", "100%");
+  colors.forEach(function(color, i){
+    grad.append("stop")
+      .attr("offset", (100/colors.length)*i + "%" )
+      .attr("stop-color", color);
+  });
+
+  return "url(#" + gradientName + ")";
+  // return "black";
+};
 
 var pack = d3.pack()
     .size([diameter - margin, diameter - margin])
@@ -109,10 +149,12 @@ d3.csv("gemstone.csv", function(error, data){
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
       .style("fill", function(d, i) { 
         if (d.data["Colors"] == undefined){
-          return colour(i);
+          // make a level-appropriate gray 
+          var gray = (255/3) * d.depth;
+          return "rgb(" + gray + "," + gray + "," + gray + ")";
         }else{
           console.log("Coloring it: " + d.data.Colors);
-          return d.data["Colors"];
+          return makeGradient(d.data["Colors"]);
         }
       })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
