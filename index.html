@@ -60,12 +60,12 @@ d3.csv("gemstone.csv", function(error, data){
   data.forEach(function(gem){
     console.log(gem);
     if ( gemlist.find(function(e){ return e.name == gem["Mineral"]; }) == undefined ){
-      gemlist.push({ "name": gem["Mineral"], "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"] });
+      gemlist.push({ "name": gem["Mineral"], "level": "mineral", "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"] });
     }
     mineral = gemlist.find(function(e){ return e.name == gem["Mineral"]; }).children;
 
     if ( mineral.find(function(e){ return e.name == gem["Gemstone"]; }) == undefined ){
-      temp = { "name": gem["Gemstone"], "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"]  };
+      temp = { "name": gem["Gemstone"], "level": "gemstone", "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"]  };
       if (temp.name.trim() == ""){
         temp.name = gem["Mineral"];
       }
@@ -76,11 +76,12 @@ d3.csv("gemstone.csv", function(error, data){
     }).children;
 
     if ( gemstone.find(function(e){ return e.name == gem["Variety"]; }) == undefined ){
-      gemstone.push({ "name": gem["Variety"], "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"]  });
+      gemstone.push({ "name": gem["Variety"], "type": "variety", "children": [], "Mohs Hardness High": gem["Mohs Hardness High"], "Mohs Hardness Low": gem["Mohs Hardness Low"]  });
     }
     variety = gemstone.find(function(e){ return e.name == gem["Variety"]; }).children;
 
     gem.name = gem["Variety"];
+    gem.type = "color";
     variety.push(gem);
   });
 
@@ -120,54 +121,12 @@ d3.csv("gemstone.csv", function(error, data){
     .data(nodes)
     .enter();
 
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-7em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.mineral; });
-
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-6em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.refractiveindexlow; });
-
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-5em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.refractiveindexhigh; });
-
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-4em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.bifringencelow; });
-
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-3em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.bifringencehigh; });
-
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-2em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.specificgravity; });
-
-  text.append("text")
-      .attr("class", "label")
-      .attr("y", "-1em")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.mohshardnesslow; });
+  // text.append("text")
+  //     .attr("class", "label")
+  //     .attr("y", "-1em")
+  //     .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
+  //     .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
+  //     .text(function(d) { return d.data["Mohs Hardness High"]; });
 
   text.append("text")
       .attr("class", "label")
@@ -182,12 +141,18 @@ d3.csv("gemstone.csv", function(error, data){
         return d.data.name; 
       });
 
-  text.append("text")
+  ["Refractive Index High", "Bifringence High", "Specific Gravity", "Mohs Hardness High"].forEach(function(prop, i){
+    text.append("text")
       .attr("class", "label")
-      .attr("y", "1em")
+      .attr("y", + i+1 + "em")
       .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.value; });
+      .text(function(d) { 
+        if (d.data.type == "color" && d.data[prop]){
+          return prop + ": " + d.data[prop]; 
+        }
+      });
+  });
 
   var node = g.selectAll("circle,text");
 
